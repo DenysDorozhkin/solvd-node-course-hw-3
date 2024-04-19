@@ -15,7 +15,10 @@ function filterUniqueWords(text) {
     return values.sort();
   }
 
-  return sortAlphabetically(filterUniqueValues(getWordsOfText(text)));
+  if (typeof text === "string") {
+    return sortAlphabetically(filterUniqueValues(getWordsOfText(text)));
+  }
+  throw new Error("Text must be a string.");
 }
 
 function getAverageGrade(students) {
