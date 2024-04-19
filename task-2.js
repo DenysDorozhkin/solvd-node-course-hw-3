@@ -3,11 +3,19 @@ function getFullName(person) {
 }
 
 function filterUniqueWords(text) {
-  return text
-    .toLowerCase()
-    .match(/\b\w+\b/g)
-    .filter((word, index, array) => array.indexOf(word) === index)
-    .sort();
+  function getWordsOfText(text) {
+    return text.toLowerCase().match(/\b\w+\b/g) || [];
+  }
+
+  function filterUniqueValues(values) {
+    return [...new Set(values)];
+  }
+
+  function sortAlphabetically(values) {
+    return values.sort();
+  }
+
+  return sortAlphabetically(filterUniqueValues(getWordsOfText(text)));
 }
 
 function getAverageGrade(students) {
